@@ -1,6 +1,6 @@
 # Telesim PnP
 
-Reduced Package only for Baxter for Telesim, a modular and plug and play teleoperation system, that can be used with any kind of robotic arms. The master repository can be found [here](https://github.com/09ubberboy90/telesim_pnp)
+Reduced Package only for Baxter for Telesim, a modular and plug and play teleoperation system, that can be used with any kind of robotic arms. The master repository can be found [here](https://github.com/cvas-ug/telesim_pnp)
 
 ![docs/images/ICRA2024_main_fig.png](docs/images/ICRA2024_main_fig.png)
 
