@@ -27,20 +27,10 @@
 [submodule "ROS2/src/isaac_sim"]
 	path = ROS2/src/isaac_sim
 	url = https://github.com/09ubberboy90/telesim_isaac.git
-[submodule "ROS2/src/t42_gripper"]
-	path = ROS2/src/t42_gripper
-	url = https://github.com/09ubberboy90/t42_gripper.git
 [submodule "ROS1/src/baxter_interface"]
 	path = ROS1/src/baxter_interface
 	url = https://github.com/09ubberboy90/baxter_interface.git
-[submodule "ROS2/src/senseglove_ros2_ws"]
-	path = ROS2/src/senseglove_ros2_ws
-	url = https://github.com/09ubberboy90/senseglove_ros2_ws.git
-	branch = ros2
 [submodule "ROS1/src/baxter_joint_controller"]
 	path = ROS1/src/baxter_joint_controller
 	url = https://github.com/09ubberboy90/baxter_joint_controller.git
 	branch = ros1
-[submodule "ROS2/src/ur_isaac"]
-	path = ROS2/src/ur_isaac
-	url = https://github.com/09ubberboy90/ur_isaac.git

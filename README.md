@@ -1,6 +1,6 @@
 # Telesim PnP
 
-Master package for Telesim, a modular and plug and play teleoperation system, that can be used with any kind of robotic arms. This repository contains both Baxter and UR Robot. Seperate version containing only one robot are available for [Baxter](https://github.com/09ubberboy90/telesim_pnp_baxter.git) or [UR3](https://github.com/09ubberboy90/telesim_pnp_ur.git).
+Reduced Package only for Baxter for Telesim, a modular and plug and play teleoperation system, that can be used with any kind of robotic arms. The master repository can be found [here](https://github.com/09ubberboy90/telesim_pnp)
 
 ![docs/images/ICRA2024_main_fig.png](docs/images/ICRA2024_main_fig.png)
 
@@ -69,8 +69,6 @@ Make sure you also have installed pyquaternion for Isaac Sim. This can be done b
 
 Make sure you have updated the urdf and rmp path according to your need in either [ur_world.py](ur3/ur_world.py) or [baxter_world.py](baxter/baxter_world.py) file. They are defined in the init as `self.urdf` and `self.rmp` respectively
 
-#### Baxter
-
 To add the packages needed for Baxter:
 
 `export ROS_PACKAGE_PATH=ROS_PACKAGE_PATH:{ros_ws}/install/rethink_ee_description/share:{ros_ws}/install/baxter_description/share`
@@ -79,43 +77,12 @@ To run for baxter
 
 `isp ROS2/src/isaac_sim/baxter/baxter_world.py`
 
-#### UR
-
-To add the packages needed for UR3 with the T42 gripper:
-
-`export ROS_PACKAGE_PATH=ROS_PACKAGE_PATH:{ros_ws}/install/t42_gripper_description/share`
-
-To run for the UR3
-
-`isp ROS2/src/isaac_sim/ur/ur_world.py`
 
 ## Real robot control
 
-### UR
-
-Make sure you have installed [ROS2 driver](https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver) for UR and followed the instructions there.
-
-Once this is done you can connect to the real robot by running:
-
-`ros2 launch ur_bringup ur_control.launch.py ur_type:={ur_type} robot_ip:={robot_ip} launch_rviz:=true`
-
-Note: `ur_type` needs to be ur3 for this package. But additional type of UR robot can be used by creating another package similar to [this](https://github.com/09ubberboy90/ur_robotiq) for the UR5 and Robotiq Gripper. More instruction on how to add new robots to the system is available [here](https://github.com/09ubberboy90/telesim_isaac/blob/master/README.md#adding-new-robots).
-
-In another terminal run:
-
-`ros2 control switch_controllers --start forward_position_controller --stop scaled_joint_trajectory_controller`
-
-And make sure you have URCap setup on the real robot.
-
-Once this is done you can start transmitting joint position from isaac sim to the robot using:
-
-`ros2 run ur_isaac joint_controller`
-
-### Baxter
-
 Baxter needs to have some terminal using ROS1 and ROS2
 
-#### ROS1
+### ROS1
 
 Run the following command
 
@@ -126,7 +93,7 @@ export ROS_MASTER_URI="{Baxter IP}"
 rosrun baxter_tools enable_robot.py -e
 ```
 
-#### ROS2
+### ROS2
 
 Run the following command
 
@@ -140,22 +107,3 @@ and in another terminal
 
 `ros run baxter_joint_controller controller`
 
-## Senseglove
-
-For the senseglove controller additional setup is needed:
-
-[Sensecom](ROS2/src/senseglove_ros2_ws/SenseCom/Linux/SenseCom.x86_64) needs to be running
-
-`ros2 launch senseglove_launch senseglove_hardware_demo.launch.py`
-
-and in another terminal
-
-`ros2 run t42_gripper_controller gripper_controller`
-
-## T42 gripper
-
-Master and Slave from [here](ROS2/src/t42_gripper/t42_gripper_controller/arduino) needs to be compiled on 2 different arduino connected through I2C. One of the arduino needs to be connected to the PC through USB, while the other needs to be connected to 2 Dynamyxel using the Dynamyxel shield.
-
-You need to update the port in the [position_controller](ROS2/src/t42_gripper/t42_gripper_controller/t42_gripper_controller/position_controller.py) and then you can run.
-
-`ros2 run t42_gripper_controller joint_sim_controller`
